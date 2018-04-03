@@ -16,5 +16,4 @@ public class NoteBook {
 	private String status;
 	private String level;
 	private String type;
-
 }
