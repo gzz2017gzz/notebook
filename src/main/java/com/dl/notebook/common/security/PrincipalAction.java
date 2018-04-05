@@ -5,7 +5,7 @@ import java.security.Principal;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 public abstract class PrincipalAction {
-	protected UserSubject getUserSubject(Principal principal) {
+	private UserSubject getUserSubject(Principal principal) {
 		UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) principal;
 		return (UserSubject) token.getPrincipal();
 	}

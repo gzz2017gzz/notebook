@@ -16,7 +16,6 @@ import com.dl.notebook.common.security.PrincipalAction;
 @RestController
 @RequestMapping({ "api/noteBook" })
 public class NoteBookAction extends PrincipalAction {
-	// private final Log logger = LogFactory.getLog(getClass());
 	@Autowired
 	private NoteBookService service;
 
@@ -24,33 +23,32 @@ public class NoteBookAction extends PrincipalAction {
 	public int save(@RequestBody NoteBook noteBook, Principal principal) {
 		noteBook.setRelease_date(new Date());
 		noteBook.setAuthor(getUser(principal).getName());
-		return this.service.save(noteBook);
+		noteBook.setDr((byte) 0);
+		return service.save(noteBook);
 	}
 
 	@RequestMapping({ "delete" })
 	public int delete(@RequestParam("ids[]") Long[] ids) {
-		return this.service.delete(ids);
+		return service.delete(ids);
 	}
 
 	@RequestMapping({ "update" })
 	public int update(@RequestBody NoteBook noteBook) {
-		return this.service.update(noteBook);
+		return service.update(noteBook);
 	}
 
 	@RequestMapping({ "queryPage" })
 	public Page<NoteBook> queryPage(@RequestBody NoteBookCond cond) {
-		return this.service.queryPage(cond);
+		return service.queryPage(cond);
 	}
 
 	@RequestMapping({ "queryList" })
 	public List<NoteBook> queryList(@RequestBody NoteBookCond cond) {
-		return this.service.queryList(cond);
+		return service.queryList(cond);
 	}
-
- 
 
 	@RequestMapping({ "findById" })
 	public NoteBook findById(@RequestParam("id") Long id) {
-		return this.service.findById(id);
+		return service.findById(id);
 	}
 }
