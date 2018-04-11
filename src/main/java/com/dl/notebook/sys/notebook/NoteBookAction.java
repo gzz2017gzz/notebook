@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +21,7 @@ public class NoteBookAction extends PrincipalAction {
 	@Autowired
 	private NoteBookService service;
 
-	@RequestMapping({ "save" })
+	@PostMapping("save")
 	public int save(@RequestBody NoteBook noteBook, Principal principal) {
 		noteBook.setRelease_date(new Date());
 		noteBook.setAuthor(getUser(principal).getName());
@@ -27,27 +29,27 @@ public class NoteBookAction extends PrincipalAction {
 		return service.save(noteBook);
 	}
 
-	@RequestMapping({ "delete" })
+	@PostMapping("delete")
 	public int delete(@RequestParam("ids[]") Long[] ids) {
 		return service.delete(ids);
 	}
 
-	@RequestMapping({ "update" })
+	@PostMapping({ "update" })
 	public int update(@RequestBody NoteBook noteBook) {
 		return service.update(noteBook);
 	}
 
-	@RequestMapping({ "queryPage" })
+	@PostMapping({ "queryPage" })
 	public Page<NoteBook> queryPage(@RequestBody NoteBookCond cond) {
 		return service.queryPage(cond);
 	}
 
-	@RequestMapping({ "queryList" })
+	@PostMapping({ "queryList" })
 	public List<NoteBook> queryList(@RequestBody NoteBookCond cond) {
 		return service.queryList(cond);
 	}
 
-	@RequestMapping({ "findById" })
+	@PostMapping({ "findById" })
 	public NoteBook findById(@RequestParam("id") Long id) {
 		return service.findById(id);
 	}

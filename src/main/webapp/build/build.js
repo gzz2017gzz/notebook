@@ -31,9 +31,9 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       console.log(chalk.red('  Build failed with errors.\n'))
       process.exit(1)
     }
-    var shell = require('shelljs')
+    // var shell = require('shelljs')
     console.log("copy login")
-    shell.cp('-R', 'login.html', config.build.assetsTemplateDirectory + '/login.ftl')
+    // shell.cp('-R', 'login.html', config.build.assetsTemplateDirectory + '/login.ftl')
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(
       '  Tip: built files are meant to be served over an HTTP server.\n' +

@@ -3,19 +3,28 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-
-
-
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: ['babel-polyfill', './src/main.js']
   },
+  // externals: {
+  //   // 'vue': 'Vue',
+  // //   'vuex':"Vuex",
+  // //   "vue-router":"VueRouter",
+  //   'element-ui': 'ELEMENT',
+  //   'iview': 'iview',
+  // //   'jquery': 'jQuery',
+  //   "moment": "moment",
+  // //   "axios":"axios",
+  // //   "less":"less",
+  // //   "querystring":"querystring",
+  // },
   output: {
+    libraryTarget: "umd",
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'

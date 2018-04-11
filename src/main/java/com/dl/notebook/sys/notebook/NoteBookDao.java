@@ -37,7 +37,7 @@ public class NoteBookDao extends BaseDao{
 		sql.append("REPLACE INTO sys_note_book (id,title,content,release_date,author,status,level,type,dr)");
 		sql.append(" VALUES (?,?,?,?,?,?,?,?,?) ");
 		Object[] params ={vo.getId(),vo.getTitle(),vo.getContent(),vo.getRelease_date(),vo.getAuthor(),vo.getStatus(),vo.getLevel(),vo.getType(),vo.getDr()};
-		//logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
+//		logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
 	}
 
