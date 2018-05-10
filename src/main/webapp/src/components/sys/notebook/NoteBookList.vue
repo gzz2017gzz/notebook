@@ -4,27 +4,27 @@
     <el-form :inline="true">
       <el-form-item label="状态">
         <el-select v-model="form.status" placeholder="请选择状态" size="small" style="width: 120px">
-          <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value"/>
         </el-select>
       </el-form-item>
       <el-form-item label="优先级">
         <el-select v-model="form.level" placeholder="请选择优先级" size="small" style="width: 120px">
-          <el-option v-for="item in levels" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          <el-option v-for="item in levels" :key="item.value" :label="item.label" :value="item.value"/>
         </el-select>
       </el-form-item>
       <el-form-item label="问题类型">
         <el-select v-model="form.type" placeholder="请选择问题类型" size="small" style="width: 120px">
-          <el-option v-for="item in types" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          <el-option v-for="item in types" :key="item.value" :label="item.label" :value="item.value"/>
         </el-select>
       </el-form-item>
       <el-form-item label="日期开始">
-        <el-date-picker v-model="form.release_date_start" type="date" placeholder="日期开始" size="small" style="width: 120px"></el-date-picker>
+        <el-date-picker v-model="form.release_date_start" type="date" placeholder="日期开始" size="small" style="width: 120px"/>
       </el-form-item>
       <el-form-item label="日期结束">
-        <el-date-picker v-model="form.release_date_end" type="date" placeholder="日期结束" size="small" style="width: 120px"></el-date-picker>
+        <el-date-picker v-model="form.release_date_end" type="date" placeholder="日期结束" size="small" style="width: 120px"/>
       </el-form-item>
       <el-form-item label="作者">
-        <el-input placeholder="请输入作者" size="small" v-model="form.author" style="width: 120px"></el-input>
+        <el-input placeholder="请输入作者" size="small" v-model="form.author" style="width: 120px"/>
       </el-form-item>
       <el-form-item>
         <el-button icon="search" @click="refresh" title="根据输入的条件查询" size="small">查询</el-button>
@@ -32,10 +32,11 @@
       </el-form-item>
     </el-form>
     <el-table :data="dataList" v-loading="loading" element-loading-text="正在加载......" border size="medium">
+      <el-table-column prop="id" label="编号" width="50"></el-table-column>
       <el-table-column prop="title" label="标题" width="200"></el-table-column>
       <el-table-column prop="content" label="内容"></el-table-column>
       <el-table-column prop="release_date" label="发布日期" width="180">
-        <template slot-scope="props"> {{props.row.release_date | DateFormat}} </template>
+        <template slot-scope="props"> {{props.row.release_date | DateFormat}}</template>
       </el-table-column>
       <el-table-column prop="author" label="作者" width="80"></el-table-column>
       <el-table-column prop="status" label="状态" width="80">
@@ -65,7 +66,7 @@
   export default {
     data: function () {
       return {
-        statuses: [{value: "", label: "全部"}, {value: "已解决", label: "已解决"}, {value: "未解决", label: "未解决"}],
+        statuses: [{value: "", label: "全部"}, {value: "已解决", label: "已解决"}, {value: "未解决", label: "未解决"}, {value: "延期解决", label: "延期解决"}],
         levels: [{value: "", label: "全部"}, {value: "高", label: "高"}, {value: "中", label: "中"}, {value: "低", label: "低"}],
         types: [{value: "", label: "全部"}, {value: "需求问题", label: "需求问题"}, {value: "设计问题", label: "设计问题"}, {value: "开发问题", label: "开发问题"}],
         total: 0,
@@ -98,7 +99,8 @@
     },
     methods: {
       statusClass: function (row) {
-        if (row.status == "未解决") return "text-danger";
+        if (row.status == "未解决") return "text-red";
+        if (row.status == "延期解决") return "text-danger";
         if (row.status == "已解决") return "text-green";
       },
       refresh() {
@@ -145,6 +147,9 @@
   }
 </script>
 <style>
+  .text-red {
+    color: red;
+  }
   .text-danger {
     color: #ff8820;
   }

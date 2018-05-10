@@ -1,7 +1,7 @@
 <template>
   <router-view></router-view>
 </template>
-<script>
+<!--<script>
 
     export default{
         data: function () {
@@ -17,4 +17,4 @@
 </script>
 <style>
 
-</style>
+</style>-->

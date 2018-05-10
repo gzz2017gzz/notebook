@@ -5,15 +5,15 @@
       <el-row>
         <el-col>
           <el-form-item label="用户" prop="name">
-            <el-input placeholder="请输入用户" v-model="form.name"></el-input>
+            <el-input placeholder="请输入用户" v-model="form.name"/>
           </el-form-item>
           <div v-if="dialogMode==save">
             <el-form-item label="密码" prop="password">
-              <el-input type="password" placeholder="请输入密码" v-model="form.password"></el-input>
+              <el-input type="password" placeholder="请输入密码" v-model="form.password"/>
             </el-form-item>
           </div>
           <el-form-item label="登录名" prop="login_id">
-            <el-input placeholder="请输入登录名" v-model="form.login_id"></el-input>
+            <el-input placeholder="请输入登录名" v-model="form.login_id"/>
           </el-form-item>
         </el-col>
       </el-row>

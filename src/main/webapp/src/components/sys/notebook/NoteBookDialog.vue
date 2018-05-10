@@ -39,7 +39,7 @@
     props: ["refresh"],
     data() {
       return {
-        statuses: [{value: "已解决", label: "已解决"}, {value: "未解决", label: "未解决"}],
+        statuses: [{value: "已解决", label: "已解决"}, {value: "未解决", label: "未解决"}, {value: "延期解决", label: "延期解决"}],
         levels: [{value: "高", label: "高"}, {value: "中", label: "中"}, {value: "低", label: "低"}],
         types: [{value: "需求问题", label: "需求问题"}, {value: "设计问题", label: "设计问题"}, {value: "开发问题", label: "开发问题"}],
         title: '',

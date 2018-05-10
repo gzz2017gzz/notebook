@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {Modal,Message} from 'iview'
+import {Modal, Message} from 'iview'
+
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 let instance = axios.create({
   validateStatus: function (status) {
@@ -15,11 +16,11 @@ instance.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
   if (error.message === 'Network Error') {
-    Modal.info( {
-      title:'提示',
-      content:'回话过期，请重新登录',
-      closable:true,
-      onOk:()=>{
+    Modal.info({
+      title: '提示',
+      content: '回话过期，请重新登录',
+      closable: true,
+      onOk: () => {
         window.location.href = '/';
       }
     });
