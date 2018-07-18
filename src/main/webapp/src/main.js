@@ -23,6 +23,6 @@ Vue.prototype.$http = http;
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })

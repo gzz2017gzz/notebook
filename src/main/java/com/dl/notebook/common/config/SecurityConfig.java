@@ -1,7 +1,5 @@
 package com.dl.notebook.common.config;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,7 +12,7 @@ import com.dl.notebook.common.util.MD5Util;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	private Log logger = LogFactory.getLog(getClass());
+//	private Log logger = LogFactory.getLog(getClass());
 	@Autowired
 	private UserSecurityService securityService;
 
@@ -25,6 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.invalidateHttpSession(true).clearAuthentication(true);//
 	}
 
+	
+	
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(securityService).passwordEncoder(new PasswordEncoder() {
@@ -36,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 			@Override
 			public boolean matches(CharSequence rawPassword, String encodedPassword) {
-				logger.info(encode(rawPassword));
+//				logger.info(encode(rawPassword));
 				return encodedPassword.equals(encode(rawPassword));
 			}
 		});

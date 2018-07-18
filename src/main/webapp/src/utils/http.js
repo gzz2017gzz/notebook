@@ -23,7 +23,8 @@ instance.interceptors.response.use(function (response) {
       onOk: () => {
         window.location.href = '/';
       }
-    });
+    })
+    ;
   }
   // Do something with response error
   return Promise.reject(error);

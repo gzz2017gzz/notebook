@@ -18,10 +18,12 @@
         </el-select>
       </el-form-item>
       <el-form-item label="日期开始">
-        <el-date-picker v-model="form.release_date_start" type="date" placeholder="日期开始" size="small" style="width: 120px"/>
+        <el-date-picker v-model="form.release_date_start" type="date" placeholder="日期开始" size="small"
+                        style="width: 120px"/>
       </el-form-item>
       <el-form-item label="日期结束">
-        <el-date-picker v-model="form.release_date_end" type="date" placeholder="日期结束" size="small" style="width: 120px"/>
+        <el-date-picker v-model="form.release_date_end" type="date" placeholder="日期结束" size="small"
+                        style="width: 120px"/>
       </el-form-item>
       <el-form-item label="作者">
         <el-input placeholder="请输入作者" size="small" v-model="form.author" style="width: 120px"/>
@@ -55,7 +57,10 @@
     </el-table>
     <br/>
     <div style="text-align: right" v-if="total > 0">
-      <el-pagination small layout="prev, pager, next" :current-page="page" :total="total" @current-change="(curr) => {this.page = curr ; this.refresh();}"></el-pagination>
+      <el-pagination small layout="sizes,prev, pager, next" :current-page="page" :total="total"
+                     @current-change="(curr) => {this.page = curr ; this.refresh();}"
+                     :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
+                     :page-size="size"></el-pagination>
     </div>
     <NoteBookDialog ref="dialog" :refresh="refresh"></NoteBookDialog>
   </div>
@@ -66,11 +71,21 @@
   export default {
     data: function () {
       return {
-        statuses: [{value: "", label: "全部"}, {value: "已解决", label: "已解决"}, {value: "未解决", label: "未解决"}, {value: "延期解决", label: "延期解决"}],
-        levels: [{value: "", label: "全部"}, {value: "高", label: "高"}, {value: "中", label: "中"}, {value: "低", label: "低"}],
-        types: [{value: "", label: "全部"}, {value: "需求问题", label: "需求问题"}, {value: "设计问题", label: "设计问题"}, {value: "开发问题", label: "开发问题"}],
+        statuses: [{value: "", label: "全部"}, {value: "已解决", label: "已解决"}, {value: "未解决", label: "未解决"}, {
+          value: "延期解决",
+          label: "延期解决"
+        }],
+        levels: [{value: "", label: "全部"}, {value: "高", label: "高"}, {value: "中", label: "中"}, {
+          value: "低",
+          label: "低"
+        }],
+        types: [{value: "", label: "全部"}, {value: "需求问题", label: "需求问题"}, {
+          value: "设计问题",
+          label: "设计问题"
+        }, {value: "开发问题", label: "开发问题"}],
         total: 0,
         page: 1,
+        size: 10,
         dataList: [],
         active: true,
         form: {
@@ -106,7 +121,7 @@
       refresh() {
         const that = this;
         that.loading = true;
-        const requestData = {...that.form, page: that.page - 1};
+        const requestData = {...that.form, page: that.page - 1, size: that.size};
         that.$http.post("/api/noteBook/queryPage", JSON.stringify(requestData)).then(res => {
           that.loading = false;
           that.dataList = res.data.content;
@@ -150,9 +165,11 @@
   .text-red {
     color: red;
   }
+
   .text-danger {
     color: #ff8820;
   }
+
   .text-green {
     color: #24ff64;
   }

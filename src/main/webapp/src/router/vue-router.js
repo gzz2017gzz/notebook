@@ -4,6 +4,7 @@ import Home from '../components/Home.vue';
 import NoteBookList from '../components/sys/notebook/NoteBookList.vue';
 import SysUserList from '../components/sys/sysuser/SysUserList.vue';
 import UpdatePassword from '../components/sys/sysuser/UpdatePassword.vue';
+
 Vue.use(Router)
 
 export default new Router({

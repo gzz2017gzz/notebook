@@ -28,8 +28,8 @@
     </el-table>
     <br/>
     <div style="text-align: right" v-if="total > 0">
-      <el-pagination small layout="prev, pager, next" :current-page="page" :total="total"
-                     @current-change="(curr) => {this.page = curr ; this.refresh();}"></el-pagination>
+      <el-pagination small layout="sizes,prev, pager, next" :current-page="page" :total="total" @current-change="(curr) => {this.page = curr ; this.refresh();}"
+                     :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}" :page-size="size"></el-pagination>
     </div>
     <SysUserDialog ref="dialog" :refresh="refresh"></SysUserDialog>
   </div>
@@ -42,6 +42,7 @@
       return {
         total: 0,
         page: 1,
+        size: 10,
         dataList: [],
         form: {
           id: null,//主键
@@ -60,7 +61,7 @@
       refresh() {
         const that = this;
         that.loading = true;
-        const requestData = {...that.form, page: that.page - 1};
+        const requestData = {...that.form, page: that.page - 1, size: that.size};
         that.$http.post("/api/sysUser/queryPage", JSON.stringify(requestData)).then(res => {
           that.loading = false;
           that.dataList = res.data.content;
