@@ -1,9 +1,11 @@
 package com.dl.notebook.common.security;
 
-import com.dl.notebook.sys.sysuser.SysUser;
 import java.util.List;
+
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+
+import com.dl.notebook.sys.sysuser.SysUser;
 
 public class UserSubject extends User {
 	private SysUser user;

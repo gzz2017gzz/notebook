@@ -38,8 +38,8 @@ public class SysUserAction extends PrincipalAction {
 
 	@RequestMapping({ "updatePassword" })
 	public int updatePassword(@RequestBody SysUser sysUser, Principal principal) {
-		sysUser.setPassword(sysUser.getNew_password());
-		sysUser.setPassword(MD5Util.encode(sysUser.getPassword()));
+		
+		sysUser.setPassword(MD5Util.md5(sysUser.getNew_password()));
 		return this.service.update(sysUser);
 	}
 

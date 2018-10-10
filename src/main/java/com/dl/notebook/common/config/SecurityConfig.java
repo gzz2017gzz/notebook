@@ -32,12 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 			@Override
 			public String encode(CharSequence rawPassword) {
-				return MD5Util.encode((String) rawPassword);
+				return MD5Util.md5((String) rawPassword);
 			}
 
 			@Override
 			public boolean matches(CharSequence rawPassword, String encodedPassword) {
-//				logger.info(encode(rawPassword));
 				return encodedPassword.equals(encode(rawPassword));
 			}
 		});

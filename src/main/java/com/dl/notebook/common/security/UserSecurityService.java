@@ -25,7 +25,7 @@ public class UserSecurityService implements UserDetailsService {
 		cond.setLogin_id(userName);
 		List<SysUser> list = this.sysUserDao.queryList(cond);
 		if (list.size() != 0) {
-			SysUser user = (SysUser) list.get(0);
+			SysUser user = list.get(0);
 			List<SimpleGrantedAuthority> auths = new ArrayList<>();
 			auths.add(new SimpleGrantedAuthority("ROLE_USER"));
 			return new UserSubject(user, auths);

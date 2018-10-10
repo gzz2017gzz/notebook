@@ -9,6 +9,5 @@
         <root level="info">
             <appenderRef ref="console"/>
         </root>
-        <logger name="org.springframework" level="error"/>
     </Loggers>
 </configuration>

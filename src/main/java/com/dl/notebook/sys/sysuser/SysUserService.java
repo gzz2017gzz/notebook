@@ -18,7 +18,7 @@ public class SysUserService {
 
 	@Transactional
 	public int save(SysUser sysUser) {
-		sysUser.setPassword(MD5Util.encode(sysUser.getPassword()));
+		sysUser.setPassword(MD5Util.md5(sysUser.getPassword()));
 		return this.dao.save(sysUser);
 	}
 
@@ -42,5 +42,5 @@ public class SysUserService {
 	public List<SysUser> queryList(SysUserCond cond) {
 		return this.dao.queryList(cond);
 	}
- 
+
 }
