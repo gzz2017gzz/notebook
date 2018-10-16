@@ -7,7 +7,7 @@ public class MD5Util {
 		return DigestUtils.md5DigestAsHex(srt.getBytes());
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) {//15517965929//264522
 		System.out.println(md5("gzz"));
 	}
 }

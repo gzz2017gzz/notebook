@@ -7,8 +7,8 @@
           <el-form-item label="用户" prop="name">
             <el-input placeholder="请输入用户" v-model="form.name"/>
           </el-form-item>
-            <el-form-item label="密码" prop="password">
-              <el-input type="password" placeholder="请输入密码" v-model="form.password"/>
+            <el-form-item label="密码" prop="new_password">
+              <el-input type="password" placeholder="请输入密码" v-model="form.new_password"/>
             </el-form-item>
           <el-form-item label="登录名" prop="login_id">
             <el-input placeholder="请输入登录名" v-model="form.login_id"/>
@@ -36,7 +36,7 @@
             {required: true, message: '请输入用户', trigger: 'blur'},
             {min: 1, max: 10, message: '用户长度不正确', trigger: 'blur'},
           ],
-          password: [
+          new_password: [
             {required: true, message: '请输入密码', trigger: 'blur'},
             {min: 1, max: 10, message: '密码长度不正确', trigger: 'blur'},
           ],
@@ -70,6 +70,7 @@
           name: null,//用户
           password: null,//密码
           login_id: null,//角色ID
+          new_password:null,
         }
       },
       addDialog() {//新增

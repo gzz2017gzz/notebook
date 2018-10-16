@@ -32,6 +32,7 @@ public class SysUserService {
 
 	@Transactional
 	public int update(SysUser sysUser) {
+		sysUser.setPassword(MD5Util.md5(sysUser.getNew_password()));
 		return this.dao.update(sysUser);
 	}
 

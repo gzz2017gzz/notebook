@@ -1,10 +1,8 @@
 package com.dl.notebook.sys.sysuser;
 
-import com.dl.notebook.common.base.Page;
-import com.dl.notebook.common.security.PrincipalAction;
-import com.dl.notebook.common.util.MD5Util;
 import java.security.Principal;
 import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.dl.notebook.common.base.Page;
+import com.dl.notebook.common.security.PrincipalAction;
 
 @RestController
 @RequestMapping({ "api/sysUser" })
@@ -39,7 +40,7 @@ public class SysUserAction extends PrincipalAction {
 	@RequestMapping({ "updatePassword" })
 	public int updatePassword(@RequestBody SysUser sysUser, Principal principal) {
 		
-		sysUser.setPassword(MD5Util.md5(sysUser.getNew_password()));
+
 		return this.service.update(sysUser);
 	}
 
