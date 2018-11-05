@@ -2,7 +2,7 @@
 <configuration>
 	<appenders>
 		<console name="console">
-			<patternLayout pattern="%d[%F:%L][%p]:%m%n" />
+			<patternLayout pattern="%d[%p][%C:%L]:%m%n" />
 		</console>
 	</appenders>
 	<Loggers>

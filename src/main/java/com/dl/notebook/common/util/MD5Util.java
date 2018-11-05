@@ -8,6 +8,6 @@ public class MD5Util {
 	}
 	
 	public static void main(String[] args) {//15517965929//264522
-		System.out.println(md5("gzz"));
+		System.out.println(md5("071819"));
 	}
 }

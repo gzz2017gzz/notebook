@@ -40,6 +40,7 @@
             </div>
           </Card>
         </Content>
+        <footer align="center">版权所有:gzz_gzz@163.com</footer>
       </Layout>
     </Layout>
     <BackTop :height="200"></BackTop>
