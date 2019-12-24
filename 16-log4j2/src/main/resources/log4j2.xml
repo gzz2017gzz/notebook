@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appenders>
+		<console name="console">
+			<patternLayout pattern="%d[%F:%L][%p]:%m%n" />
+		</console>
+		<RollingRandomAccessFile name="file" append="true"
+			fileName="${app.home:-.}/logs/web-center.log" filePattern="$${app.home:-.}/logs/%d{yyyyMMdd}-%i.log.zip">
+			<PatternLayout pattern="%d[%F:%L][%p]:%m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" />
+				<!-- <SizeBasedTriggeringPolicy size="10 KB" /> -->
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingRandomAccessFile>
+		<Async name="AsyncAppender">
+			<AppenderRef ref="file" />
+		</Async>
+	</appenders>
+	<Loggers>
+		<root level="debug">
+			<appenderRef ref="console" />
+			<appenderRef ref="file" />
+		</root>
+		<!-- 指定包的日志级别 -->
+		<!-- <logger name="org.springframework" level="ERROR" /> -->
+	</Loggers>
+</configuration>

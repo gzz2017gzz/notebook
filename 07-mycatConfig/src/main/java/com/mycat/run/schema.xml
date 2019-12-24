@@ -1,0 +1,197 @@
+<?xml version="1.0"?>  
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+	<schema name="TESTDB" checkSQLschema="false" sqlMaxLimit="100">
+		<!--体测仪配置信息 -->
+		<table name="admin_bca" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--admin_branch配置信息 -->
+		<table name="admin_branch" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--admin_branch_group配置信息 -->
+		<table name="admin_branch_group" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--admin_branch_rule配置信息 -->
+		<table name="admin_branch_rule" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--admin_department配置信息 -->
+		<table name="admin_department" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--admin_menu配置信息 -->
+		<table name="admin_menu" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--admin_menu_rule配置信息 -->
+		<table name="admin_menu_rule" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--发送短信需要的配置配置信息 -->
+		<table name="admin_msg_config" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--admin_user配置信息 -->
+		<table name="admin_user" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app首页配置信息 -->
+		<table name="app_branch_img" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app首页新闻配置信息 -->
+		<table name="app_branch_news" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_dyn_msg配置信息 -->
+		<table name="app_dyn_msg" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_dyn_msg_at配置信息 -->
+		<table name="app_dyn_msg_at" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_dyn_msg_mark配置信息 -->
+		<table name="app_dyn_msg_mark" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_dyn_msg_praise配置信息 -->
+		<table name="app_dyn_msg_praise" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_dyn_msg_reply配置信息 -->
+		<table name="app_dyn_msg_reply" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_dyn_msg_report配置信息 -->
+		<table name="app_dyn_msg_report" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_dyn_msg_statistics配置信息 -->
+		<table name="app_dyn_msg_statistics" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_function配置信息 -->
+		<table name="app_function" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_member_statistics配置信息 -->
+		<table name="app_member_statistics" primaryKey="member_id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_role_function配置信息 -->
+		<table name="app_role_function" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--app_user_follower配置信息 -->
+		<table name="app_user_follower" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--部门配置信息 -->
+		<table name="base_department" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--base_dict配置信息 -->
+		<table name="base_dict" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--员工配置信息 -->
+		<table name="base_employee" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--员工角色关系表配置信息 -->
+		<table name="base_employee_role" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--base_event_log配置信息 -->
+		<table name="base_event_log" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--功能配置信息 -->
+		<table name="base_function" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--角色资源关系(功能)配置信息 -->
+		<table name="base_function_role" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--潜客/会员表配置信息 -->
+		<table name="base_member" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--会员-健身项目 关系表配置信息 -->
+		<table name="base_member_project" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--会员 健身目标配置信息 -->
+		<table name="base_member_target" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--国籍配置信息 -->
+		<table name="base_nat" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--人员配置信息 -->
+		<table name="base_person" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--人员-慢性病配置信息 -->
+		<table name="base_person_chronic" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--岗位(角色)配置信息 -->
+		<table name="base_role" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--角色资源关系(数据)配置信息 -->
+		<table name="base_role_department" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--base_zone配置信息 -->
+		<table name="base_zone" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--门店信息配置信息 -->
+		<table name="center_branch" primaryKey="branch_id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--门店轮播图配置信息 -->
+		<table name="center_branch_banner" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--卡配置信息 -->
+		<table name="center_card" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--卡标签配置信息 -->
+		<table name="center_card_category" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--续卡记录配置信息 -->
+		<table name="center_card_continue" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--入场记录配置信息 -->
+		<table name="center_card_enter" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--延期记录配置信息 -->
+		<table name="center_card_extend" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--挂失记录配置信息 -->
+		<table name="center_card_lose" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--补卡记录配置信息 -->
+		<table name="center_card_patch" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--停卡记录配置信息 -->
+		<table name="center_card_pause" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--退卡记录配置信息 -->
+		<table name="center_card_quit" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--转让记录配置信息 -->
+		<table name="center_card_tran" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--卡种配置信息 -->
+		<table name="center_card_type" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--卡升级记录配置信息 -->
+		<table name="center_card_up" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--私教预约配置信息 -->
+		<table name="center_course_appoint" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--课种配置信息 -->
+		<table name="center_course_type" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--课种教练关系表配置信息 -->
+		<table name="center_course_type_employee" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--定金配置信息 -->
+		<table name="center_deposit" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--退定金记录配置信息 -->
+		<table name="center_deposit_quit" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--定金使用记录配置信息 -->
+		<table name="center_deposit_use" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--小团体私教排课配置信息 -->
+		<table name="center_group_course" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--小团体私教预约配置信息 -->
+		<table name="center_group_course_appoint" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--更衣柜配置信息 -->
+		<table name="center_locker" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--换柜记录表配置信息 -->
+		<table name="center_locker_change" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--续柜记录表配置信息 -->
+		<table name="center_locker_continue" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--租柜记录表配置信息 -->
+		<table name="center_locker_lease" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--退柜记录表配置信息 -->
+		<table name="center_locker_quit" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--转柜记录表配置信息 -->
+		<table name="center_locker_transfer" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--更衣柜类型配置信息 -->
+		<table name="center_locker_type" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--更衣区域配置信息 -->
+		<table name="center_locker_zone" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--会员购买私教课程配置信息 -->
+		<table name="center_member_course" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--私教课程转会员记录配置信息 -->
+		<table name="center_member_course_member_transfer" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--会员购买私教课程记录表配置信息 -->
+		<table name="center_member_course_record" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--私教课程转教练记录配置信息 -->
+		<table name="center_member_course_teach_transfer" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--定单配置信息 -->
+		<table name="center_order" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--系统参数配置信息 -->
+		<table name="center_param" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--标签人员关系配置信息 -->
+		<table name="center_person_tag" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--推送配置信息 -->
+		<table name="center_push" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--教室表配置信息 -->
+		<table name="center_room" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--标签配置信息 -->
+		<table name="center_tag" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--回访记录配置信息 -->
+		<table name="center_visit" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--待办工作配置信息 -->
+		<table name="center_work" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--结果类型配置信息 -->
+		<table name="center_work_result" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--体测数据表配置信息 -->
+		<table name="device_bca_data" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--emojj配置信息 -->
+		<table name="emojj" primaryKey="ttt" dataNode="node_db02,node_db03" rule="role1" />
+		<!--权限信息配置信息 -->
+		<table name="sys_auth" primaryKey="authority_id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--组织机构配置信息 -->
+		<table name="sys_dept" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--数据字典配置信息 -->
+		<table name="sys_dict" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--字典类型配置信息 -->
+		<table name="sys_dict_type" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--功能菜单配置信息 -->
+		<table name="sys_func" primaryKey="func_id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--系统参数配置信息 -->
+		<table name="sys_para" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--角色配置信息 -->
+		<table name="sys_role" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--角色用户关联配置信息 -->
+		<table name="sys_role_user" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+		<!--用户配置信息 -->
+		<table name="sys_user" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+	</schema>
+	<dataNode name="node_db01" dataHost="dataHost01" database="db01" />
+	<dataNode name="node_db02" dataHost="dataHost01" database="db02" />
+	<dataNode name="node_db03" dataHost="dataHost01" database="db03" />
+	<dataHost name="dataHost01" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native">
+		<heartbeat>select user()</heartbeat>
+		<writeHost host="server1" url="127.0.0.1:3306" user="root" password="123456" />
+	</dataHost>
+</mycat:schema>

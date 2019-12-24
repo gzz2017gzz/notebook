@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appenders>
+		<console name="console">
+			<patternlayout pattern="%d[%F:%L][%p]:%m%n" />
+		</console>
+	</appenders>
+	<loggers>
+		<root level="debug"><appenderref ref="console" /></root>
+<!-- 		<logger name="org.springframework" level="error" /> -->
+	</loggers>
+</configuration>

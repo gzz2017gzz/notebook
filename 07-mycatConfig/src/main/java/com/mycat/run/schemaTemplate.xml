@@ -1,0 +1,15 @@
+<?xml version="1.0"?>  
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+	<schema name="TESTDB" checkSQLschema="false" sqlMaxLimit="100">
+		<table name="users" primaryKey="id" dataNode="node_db01" />
+		<table name="item" primaryKey="id" dataNode="node_db02,node_db03" rule="role1" />
+	</schema>
+	<dataNode name="node_db01" dataHost="dataHost01" database="db01" />
+	<dataNode name="node_db02" dataHost="dataHost01" database="db02" />
+	<dataNode name="node_db03" dataHost="dataHost01" database="db03" />
+	<dataHost name="dataHost01" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native">
+		<heartbeat>select user()</heartbeat>
+		<writeHost host="server1" url="127.0.0.1:3306" user="root" password="123456" />
+	</dataHost>
+</mycat:schema>
