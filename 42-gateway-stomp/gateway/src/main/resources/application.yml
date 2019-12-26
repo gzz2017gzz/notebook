@@ -1,0 +1,28 @@
+server:
+   port: 7078
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:8761/eureka
+spring:
+   application:
+      name: gateway
+   cloud:
+      gateway:
+         discovery:
+            locator:
+               enabled: true #启用路由访问
+               lower-case-service-id: true #启动服务名小写
+         routes:
+         -  id: hello1
+            uri: lb://hello
+            predicates:
+            - Path=/hello/**
+            filters:
+            - StripPrefix=1
+         -  id: hello2
+            uri: lb:ws://hello
+            predicates:
+            - Path=/hello/**
+            filters:
+            - StripPrefix=1
