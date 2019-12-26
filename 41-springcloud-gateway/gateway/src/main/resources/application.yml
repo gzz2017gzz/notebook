@@ -1,0 +1,18 @@
+server:
+   port: 8080
+spring:
+   application:
+      name: gateway
+   cloud:
+      gateway:
+         discovery:
+            locator:
+               enabled: true #启用路由访问
+               lower-case-service-id: true #启动服务名小写
+eureka:
+   client:
+      service-url:
+         defaultZone: http://localhost:8761/eureka/
+   instance:
+      instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+      prefer-ip-address: true
