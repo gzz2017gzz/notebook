@@ -1,7 +1,6 @@
 package com.gzz.config;
 
-import javax.annotation.PostConstruct;
-
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class TestUser {
 		log.info("TestUser");
 	}
 
-	@PostConstruct
+	@Test
 	public void run() {
 		log.info("@PostConstruct");
 		int id = -1;
