@@ -1,0 +1,29 @@
+
+在浏览器输入如下地址
+http://localhost:8080/actuator/beans
+
+
+ID	JMX	Web
+auditevents	是	没有
+beans	是	没有
+caches	是	没有
+conditions	是	没有
+configprops	是	没有
+env	是	没有
+flyway	是	没有
+health	是	是
+heapdump	N/A	没有
+httptrace	是	没有
+info	是	是
+integrationgraph	是	没有
+jolokia	N/A	没有
+logfile	N/A	没有
+loggers	是	没有
+liquibase	是	没有
+metrics	是	没有
+mappings	是	没有
+prometheus	N/A	没有
+scheduledtasks	是	没有
+sessions	是	没有
+shutdown	是	没有
+threaddump	是	没有
