@@ -1,0 +1,9 @@
+aliyun:
+  mqtt:
+    instanceId: 1
+    endPoint: 2
+    accessKey: 3
+    secretKey: 4
+    parentTopic: 5
+    clientId: 6
+ 
