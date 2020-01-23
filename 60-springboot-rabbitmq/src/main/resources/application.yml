@@ -1,0 +1,8 @@
+spring: 
+   application:
+      name: rabbitmq-hello
+   rabbitmq: 
+      host: 192.168.145.138
+      port: 5672
+      username: gzz
+      password: gzz
