@@ -1,0 +1,51 @@
+package com.hengyu.chapter39.configuration;
+
+import javax.sql.DataSource;
+
+import org.quartz.Scheduler;
+import org.quartz.spi.JobFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
+
+/**
+ * quartz定时任务配置
+ */
+@Configuration
+public class SchedulerConfiguration {
+
+	@Bean
+	public SchedulerFactoryBean schedulerFactoryBean(JobFactory jobFactory, DataSource dataSource) {
+		SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
+		// 将spring管理job自定义工厂交由调度器维护
+		schedulerFactoryBean.setJobFactory(jobFactory);
+		// 设置覆盖已存在的任务
+		// schedulerFactoryBean.setOverwriteExistingJobs(true);//默认为false
+		// 项目启动完成后，等待2秒后开始执行调度器初始化
+//		schedulerFactoryBean.setStartupDelay(2);
+		// 设置调度器自动运行
+// 		schedulerFactoryBean.setAutoStartup(true);//默认为true
+		// 设置数据源，使用与项目统一数据源
+		schedulerFactoryBean.setDataSource(dataSource);// 加此句JOB的执行情况就在数据库中，支持集群布署；否则在内存中不支持集群部署
+		// *** 初始化SQL在这个包里自行执行即可： org.quartz.impl.jdbcjobstore
+		// 设置上下文spring bean name
+//		schedulerFactoryBean.setApplicationContextSchedulerContextKey("applicationContext");
+		// 设置配置文件位置
+//		schedulerFactoryBean.setConfigLocation(new ClassPathResource("/quartz.properties"));
+		return schedulerFactoryBean;
+	}
+
+	@Bean
+	public Scheduler scheduler(SchedulerFactoryBean schedulerFactoryBean) {
+		schedulerFactoryBean.setOverwriteExistingJobs(true);
+		return schedulerFactoryBean.getScheduler();
+	}
+
+//	@Bean
+//	public JobStore jobStore() {
+//		JobStore JobStoreTX = new JobStoreTX();
+//		JobStoreTX.setInstanceName(StdJDBCDelegate.class.getName());
+//		return JobStoreTX;
+//	}
+
+}

@@ -1,0 +1,29 @@
+package com.gzz.config;
+
+import javax.sql.DataSource;
+
+import org.quartz.Scheduler;
+import org.quartz.spi.JobFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
+
+@Configuration
+public class SchedulerConfiguration {
+
+	@Bean
+	public SchedulerFactoryBean schedulerFactoryBean(JobFactory jobFactory, DataSource dataSource) {
+		SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
+		schedulerFactoryBean.setJobFactory(jobFactory);
+		// 设置数据源，使用与项目统一数据源
+		schedulerFactoryBean.setDataSource(dataSource);// 加此句JOB的执行情况就在数据库中，支持集群布署；否则在内存中不支持集群部署
+		// *** 初始化SQL在这个包里,需要手动行执行： org.quartz.impl.jdbcjobstore
+		return schedulerFactoryBean;
+	}
+
+	@Bean
+	public Scheduler scheduler(SchedulerFactoryBean schedulerFactoryBean) {
+		schedulerFactoryBean.setOverwriteExistingJobs(true);
+		return schedulerFactoryBean.getScheduler();
+	}
+}
