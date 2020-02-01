@@ -1,0 +1,17 @@
+spring:
+   datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8
+      username: root
+      password: root
+   jpa:
+      hibernate:
+         ddl-auto: update
+      properties:
+         hibernate:
+#            format_sql: true
+            show_sql: true
+   mvc:
+      view:
+         prefix: /
+         suffix: .jsp
