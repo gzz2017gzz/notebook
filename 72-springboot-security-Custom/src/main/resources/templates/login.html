@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+</head>
+<body>
+	<h3>自定义----验证码登录</h3>
+	<table>
+		<tr>
+			<td>用户名:</td>
+			<td><input type="text" autocomplete="off" name="mobile"></td>
+		</tr>
+		<tr>
+			<td>验证码:</td>
+			<td><input type="password" autocomplete="off" name="sms_code"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><a href="javascript:void(0);" onclick="sendSms()">获取验证码</a>
+				<button type="button" onclick="loginSms()">登录</button></td>
+		</tr>
+	</table>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	function sendSms() {
+		window.open('/sms/code?mobile=' + $("input[name=mobile]").val());
+	}
+
+	function loginSms() {
+		var mobile = $("input[name=mobile]").val();
+		var smsCode = $("input[name=sms_code]").val();
+		if (mobile === "" || smsCode === "") {
+			alert("用户名或密码不能为空");
+			return;
+		}
+		$.ajax({
+			type : "POST",
+			url : "/sms/login",
+			data : {
+				"mobile" : mobile,
+				"smsCode" : smsCode
+			},
+			success : function(e) {
+				console.log(e);
+				alert("登陆成功")
+				setTimeout(function() {
+					location.href = '/hello';
+				}, 500);
+			},
+			error : function(e, a, b) {
+				console.log(a);
+				console.log(b);
+				console.log(e.responseText);
+				alert("登陆失败zxczxczc")
+			}
+		});
+	}
+</script>
+</html>
