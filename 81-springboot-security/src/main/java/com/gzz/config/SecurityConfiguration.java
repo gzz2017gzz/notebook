@@ -1,5 +1,6 @@
 package com.gzz.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,9 +12,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		/** 在内存中创建一个名为 "user" 的用户，密码为 "pwd"，拥有 "USER" 权限，密码使用BCryptPasswordEncoder加密 */
-		auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("user").password(new BCryptPasswordEncoder().encode("pwd")).roles("USER");
+		auth.inMemoryAuthentication().passwordEncoder(getEncode()).withUser("user").password(getEncode().encode("pwd")).roles("USER");
 		/** 在内存中创建一个名为 "admin" 的用户，密码为 "pwd"，拥有 "USER" 和"ADMIN"权限 */
-		auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("admin").password(new BCryptPasswordEncoder().encode("pwd")).roles("USER", "ADMIN");
+		auth.inMemoryAuthentication().passwordEncoder(getEncode()).withUser("admin").password(getEncode().encode("pwd")).roles("USER", "ADMIN");
 	}
 
 	/* 匹配 "/","/index" 路径，不需要权限即可访问 */
@@ -33,4 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and().logout()//
 				.logoutUrl("/logout").logoutSuccessUrl("/login");//
 	}
+
+	@Bean
+	public BCryptPasswordEncoder getEncode() {
+		return new BCryptPasswordEncoder();
+	}
+
 }
