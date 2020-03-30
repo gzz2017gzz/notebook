@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class User implements BeanFactoryAware, BeanNameAware, InitializingBean, DisposableBean, ApplicationContextAware {
+public class User implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
 	public User() {
 		log.info("User --> 构造函数");
 	}
@@ -40,7 +40,11 @@ public class User implements BeanFactoryAware, BeanNameAware, InitializingBean, 
 	@Override
 	public void destroy() throws Exception {
 		log.info("DisposableBean --> destroy");
+	}
 
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		log.info("ApplicationContextAware --> setApplicationContext");
 	}
 
 	@PostConstruct
@@ -51,11 +55,6 @@ public class User implements BeanFactoryAware, BeanNameAware, InitializingBean, 
 	@PreDestroy
 	public void destory() {
 		log.info("User --> @PreDestroy");
-	}
-
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		log.info("ApplicationContextAware --> setApplicationContext");
 	}
 
 	public void run() {
