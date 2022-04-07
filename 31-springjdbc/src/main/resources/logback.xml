@@ -8,6 +8,8 @@
 	<root level="info">
 		<appender-ref ref="STDOUT" />
 	</root>
-<!-- 	<logger name="org.springframework.test.context.support" level="error" /> -->
-<!-- 	<logger name="com.zaxxer.hikari.HikariDataSource" level="error" /> -->
+	<logger name="org.springframework.test.context.support" level="error" />
+	<logger name="com.zaxxer.hikari.HikariDataSource" level="error" />
+<!-- 	<logger name="org.springframework.jdbc.core.StatementCreatorUtils" level="trace" /> -->
+<!-- 	<logger name="org.springframework.jdbc.core.JdbcTemplate" level="trace" /> -->
 </configuration>

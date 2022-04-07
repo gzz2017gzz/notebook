@@ -11,9 +11,10 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.zaxxer.hikari.HikariDataSource;
+
 /**
  * @author https://www.jianshu.com/u/3bd57d5f1074
- * @date 2019-12-24 10:50:00
+ * @date 2022-04-07 23:56:00
  **/
 @Configuration
 @ComponentScan("com.gzz")
@@ -22,7 +23,7 @@ public class SpringConfig {
 	@Bean
 	public DataSource getDataSource(Environment env) {
 		HikariDataSource dataSource = new HikariDataSource();
-		dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
+//		dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
 		dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
 		dataSource.setUsername(env.getProperty("jdbc.user"));
 		dataSource.setPassword(env.getProperty("jdbc.password"));
@@ -30,7 +31,7 @@ public class SpringConfig {
 	}
 
 	@Bean
-	public JdbcTemplate getJdbcTemplate(@Autowired DataSource dataSource) {
+	public JdbcTemplate jdbcTemplate(@Autowired DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
 	}
 
