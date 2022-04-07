@@ -30,61 +30,49 @@ public class TestJdbc {
 	// 返回单行单列(字符串型) 使用聚合函数
 	@Test
 	public void run9() {
-		int id = -1;
-		Object[] obj = new Object[] { id };
-		String sql = "SELECT MAX(name) FROM user WHERE id>?";
-		String name = jdbcTemplate.queryForObject(sql, String.class, obj);
+		String sql = "SELECT MAX(name) FROM user WHERE id > ?";
+		String name = jdbcTemplate.queryForObject(sql, String.class, -1);
 		log.info("name={}", name);
 	}
 
 	// 返回单行单列(数据型) 使用聚合函数
 	@Test
 	public void run8() {
-		int id = -1;
-		Object[] obj = new Object[] { id };
-		String sql = "SELECT COUNT(*) FROM user WHERE id>?";
-		Integer count = jdbcTemplate.queryForObject(sql, Integer.class, obj);
+		String sql = "SELECT COUNT(*) FROM user WHERE id > ?";
+		Integer count = jdbcTemplate.queryForObject(sql, Integer.class, -1);
 		log.info("count={}", count);
 	}
 
 	// 返回单行记录弱类型 返回记录个数必须为一条
 	@Test
 	public void run7() {
-		int id = 1;
-		Object[] obj = new Object[] { id };
-		String sql = "SELECT id,name,age FROM user WHERE id=?";
-		Map<String, Object> map = jdbcTemplate.queryForMap(sql, obj);
+		String sql = "SELECT id,name,age FROM user WHERE id = ?";
+		Map<String, Object> map = jdbcTemplate.queryForMap(sql, -1);
 		log.info("map={}", map);
 	}
 
 	// 有参数并且弱类型<Map<String, Object>> 适用于各种场景
 	@Test
 	public void run6() {
-		int id = -1;
-		Object[] obj = new Object[] { id };
-		String sql = "SELECT id,name,age FROM user WHERE id>?";
-		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql, obj);
+		String sql = "SELECT id,name,age FROM user WHERE id > ?";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql, -1);
 		log.info("list={}", list);
 	}
 
 	// 返回单个对象的查询 返回记录个数必须为一条
 	@Test
 	public void run5() {
-		int id = 1;
-		Object[] obj = new Object[] { id };
-		String sql = "SELECT id,name,age FROM user WHERE id=?";
-		User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), obj);
+		String sql = "SELECT id,name,age FROM user WHERE id = ?";
+		User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), 1);
 		log.info("user={}", user);
 	}
 
 	// 有参数并且指定反回记录类型
 	@Test
 	public void run4() {
-		int id = -1;
-		Object[] obj = new Object[] { id };
-		String sql = "SELECT id,name,age FROM user WHERE id=?";
+		String sql = "SELECT id,name,age FROM user WHERE id = ?";
 		// BeanPropertyRowMapper//bean属性行映射:把一行记录转成实体类对象
-		List<User> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class), obj);
+		List<User> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class), -1);
 		for (User user : list) {
 			log.info("user={}", user);
 		}
@@ -93,22 +81,17 @@ public class TestJdbc {
 	// insert update delete用同模板中的同一个方法 有参数delete语句
 	@Test
 	public void run3() {
-		int id = 23;
-		Object[] obj = new Object[] { id };
-		String sql = "DELETE FROM user WHERE id=?";
-		int count = jdbcTemplate.update(sql, obj);
+		String sql = "DELETE FROM user WHERE id = ?";
+		int count = jdbcTemplate.update(sql, 23);
 		log.info("count={}", count);
 	}
 
 	// 有参数update语句
 	@Test
 	public void run2() {
-		User user = new User();
-		user.setAge(10);
-		user.setName("王五光");
-		user.setId(2);
+		User user = User.builder().age(10).name("王五光").id(2).build();
 		Object[] obj = new Object[] { user.getName(), user.getAge(), user.getId() };
-		String sql = "UPDATE user SET name=?,age=? WHERE id=?";
+		String sql = "UPDATE user SET name = ?,age = ? WHERE id = ?";
 		int count = jdbcTemplate.update(sql, obj);
 		log.info("count={}", count);
 	}
@@ -116,11 +99,9 @@ public class TestJdbc {
 	// 有参数insert语句
 	@Test
 	public void run1() {
-		User user = new User();
-		user.setAge(10);
-		user.setName("王五");
+		User user = User.builder().age(10).name("王五").build();
 		Object[] obj = new Object[] { user.getAge(), user.getName() };
-		String sql = "INSERT INTO user (age,name) VALUES (?,?)";
+		String sql = "INSERT INTO user (age,name) VALUES ( ?, ? )";
 		int count = jdbcTemplate.update(sql, obj);
 		log.info("count={}", count);
 	}
