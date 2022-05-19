@@ -74,30 +74,32 @@ public class TimerRun {
 //        timer.cancel();
 //    }
 
-//	public static void main(String[] args) throws ParseException {
-//		SimpleDateFormat sf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
-//		Date date = sf.parse("2018-02-12 18:33:00");
-//		Timer timer = new Timer();
-//		timer.schedule(new TimerTask() {
-//			@Override
-//			public void run() {
-//				System.out.println(new Date() + "系统正在运行……");
-//			}
-//		}, date, 10 * 1000);
-//	}
-
 	public static void main(String[] args) throws ParseException {
 		SimpleDateFormat sf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
-		Date date = sf.parse("2018-02-12 18:39:00");
-
+		Date date = sf.parse("2018-02-12 18:33:00");
 		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
-
+		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				System.out.println(new Date() + "系统正在运行……");
 			}
 		}, date, 10 * 1000);
 	}
+
+//	public static void main(String[] args) throws ParseException {
+//		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		Date date = sf.parse("2022-04-20 00:00:00");
+//
+//		Timer timer = new Timer();
+//		// task-所要安排的任务
+//		// time-首次执行任务的时间
+//		// period-执行一次task的时间间隔，单位毫秒
+//		timer.scheduleAtFixedRate(new TimerTask() {
+//			@Override
+//			public void run() {
+//				System.out.println(sf.format(new Date()) + "系统正在运行……");
+//			}
+//		}, date, 100 * 1000);
+//	}
 
 }

@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-@Configuration  
-@ComponentScan("com.gzz") 
+@Configuration
+@ComponentScan("com.gzz")
 public class SpringConfig extends WebMvcConfigurationSupport {
 
 	@Bean // 相当于Spring配置文件bean节点
